@@ -43,7 +43,7 @@ Material:
     - Vector2_87a1170c130c45ea942fb23b00421b15: {r: 0.4, g: 0.5, b: 0, a: 0}
     - _TrailColor: {r: 1.4980392, g: 0.22745098, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &1491175913592545230
+--- !u!114 &8788203033718764755
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

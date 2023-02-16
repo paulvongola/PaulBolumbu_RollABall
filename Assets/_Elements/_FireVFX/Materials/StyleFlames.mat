@@ -52,7 +52,7 @@ Material:
     m_Colors:
     - _NoiseScale: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &353770398303053234
+--- !u!114 &5953101039593443515
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

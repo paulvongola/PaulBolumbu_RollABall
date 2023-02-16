@@ -20,9 +20,9 @@ public class Explosion : MonoBehaviour
         Vector3 position = contact.point;
         Instantiate(explosionPrefab, position, rotation);
         /*yield return new WaitForSeconds(5);*/
-/*        Destroy(gameObject);
-*/        /*explosionPrefab.GetComponent<ParticleSystem>().Stop();*/
-        
+        Destroy(gameObject);
+        /*explosionPrefab.GetComponent<ParticleSystem>().Stop();*/
+
     }
 
     // Update is called once per frame
