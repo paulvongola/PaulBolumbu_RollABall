@@ -11,7 +11,7 @@ public class Explosion : MonoBehaviour
     
 
     // Start is called before the first frame update
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         Debug.Log("OK");
 
