@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     private float movementY;
     [SerializeField] private TMP_Text _scoreText;
     [SerializeField] private TMP_Text _scoreTexte;
+    [SerializeField] public GameObject flame;
+    public delegate void MessageEvent();
+    public static event MessageEvent ObjetToucher;
 
     void Start()
     {
@@ -35,9 +38,11 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Target_Trigger"))  
+        if (other.gameObject.CompareTag("Target_Trigger"))
         {
             Destroy(other.gameObject);
+            ObjetToucher.Invoke();
+
         }
     }
 
@@ -45,21 +50,30 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Target") || (collision.gameObject.CompareTag("TargetGreen")))
         {
+            Instantiate(flame, collision.transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
-            UpdateScore();
+            UpdateScore(collision);
+            ObjetToucher.Invoke();
         }
     }
-    private void UpdateScore()
+    private void UpdateScore(Collision col)
+
     {
-        ScoreValue++;
+        if (col.gameObject.tag == "TargetGreen") // Si on touche un objet vert , le score augmente de 1
+        {
+
+            ScoreValue++;
+        }
+        else
+        {
+            ScoreValue--;
+        }
         _scoreText.text = "Score : " + ScoreValue;
+
+
     }
 
-    private void UpdateScoreNegative()
-    {
-        ScoreValue--;
-        _scoreTexte.text = "Score : " + ScoreValue;
-    }
+
 
 
     private void OnMove(InputValue movementValue)
@@ -76,33 +90,5 @@ public class Player : MonoBehaviour
 
         _rigidbody.AddForce(movement * speed);
     }
-
-
-    /*public Scene _scene;
-
-    public static Player instance;*/
-    //private void Awake()
-    //{
-    //    if (instance != null)
-    //    {
-    //        Destroy(gameObject);
-    //        return;
-    //    }
-
-    //    instance = this;
-    //    DontDestroyOnLoad(gameObject);
-    //}
-    /*
-        void Start()
-        {
-            _rigidbody = GetComponent<Rigidbody>();
-
-            _scene = SceneManager.GetActiveScene();
-
-            Debug.Log("La scène active est '" + _scene.name + "'. index= " + _scene.buildIndex);
-
-
-
-        }*/
-
 }
+
