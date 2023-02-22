@@ -16,25 +16,28 @@ public class Player : MonoBehaviour
     private float movementX;
     private float movementY;
     [SerializeField] private TMP_Text _scoreText;
-    [SerializeField] private TMP_Text _scoreTexte;
+    //[SerializeField] private TMP_Text _scoreTexte;
     [SerializeField] public GameObject flame;
     public delegate void MessageEvent();
     public static event MessageEvent ObjetToucher;
+
+
+
 
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _scoreText.text = "Score : " + ScoreValue;
-        _scoreTexte.text = "Score :" + ScoreValue;
+        //_scoreTexte.text = "Score :" + ScoreValue;
     }
 
-    void Update()
+    /*void Update()
     {
         if (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f)
         {
             _rigidbody.AddForce(Input.GetAxis("Horizontal") * 0.5f, 0f, Input.GetAxis("Vertical"));
         }
-    }
+    }*/
 
     private void OnTriggerEnter(Collider other)
     {
